@@ -1,0 +1,37 @@
+{
+    "name": "gulp",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "run-p scss:watch html:validate:watch serve",
+        "build": "run-s scss:build html:validate",
+        "scss:watch": "sass --watch scss:css",
+        "scss:build": "sass scss:css --style=compressed --no-source-map",
+        "serve": "browser-sync --config browser-sync.js",
+        "html:validate": "w3c-html-validator --ignore=\"Trailing slash on void elements\" --continue",
+        "html:validate:watch": "onchange -i '**/*.html' -- npm run html:validate"
+    },
+    "pre-commit": [
+        "build"
+    ],
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^3.0.2",
+        "cssnano": "^7.0.6",
+        "gulp": "^5.0.0",
+        "gulp-autoprefixer": "^9.0.0",
+        "gulp-sass": "^5.1.0",
+        "npm-run-all": "^4.1.5",
+        "onchange": "^7.1.0",
+        "pre-commit": "^1.2.2",
+        "sass": "^1.78.0",
+        "w3c-html-validator": "^1.8.1"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.4.20",
+        "gulp-postcss": "^10.0.0",
+        "react-medium-image-zoom": "^5.2.8"
+    }
+}
